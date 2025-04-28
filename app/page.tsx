@@ -6,12 +6,13 @@ import { formatForUrl, formatUniversityDisplay } from "@/lib/utils";
 
 export default function Home() {
     const universities = getHillUniversities();
+    console.log(universities);
 
     return (
         <div className="min-h-screen relative bg-gradient-to-b from-blue-800 to-blue-600 overflow-x-hidden">
             {/* Decorative circles */}
             <div className="absolute top-0 left-0 w-64 h-64 bg-blue-400 rounded-full opacity-10 transform -translate-x-1/2 -translate-y-1/2"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-300 rounded-full opacity-10 transform translate-x-1/3 translate-y-1/3"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-300 rounded-fuxll opacity-10 transform translate-x-1/3 translate-y-1/3"></div>
             <div className="absolute top-1/2 right-0 w-48 h-48 bg-blue-400 rounded-full opacity-10 transform translate-x-1/4 -translate-y-1/2"></div>
 
             <main className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 relative z-10">

@@ -24,13 +24,13 @@ export function formatCourseForUrl(name: string): string {
  * Formats a university name for display by replacing hyphens with spaces
  */
 export function formatUniversityDisplay(name: string): string {
-    if (name.toLowerCase().includes("gehu-bhimtal")) {
+    if (name.toLowerCase().includes("btl")) {
         return "Graphic Era Hill University, Bhimtal";
     }
-    if (name.toLowerCase().includes("gehu-dehradun")) {
+    if (name.toLowerCase().includes("ddn")) {
         return "Graphic Era Hill University, Dehradun";
     }
-    if (name.toLowerCase().includes("gehu-haldwani")) {
+    if (name.toLowerCase().includes("hld")) {
         return "Graphic Era Hill University, Haldwani";
     }
     if (name.toLowerCase().includes("geu")) {

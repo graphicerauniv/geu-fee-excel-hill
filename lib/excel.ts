@@ -269,7 +269,9 @@ export function getAvailableUniversities(): string[] {
 
 export function getHillUniversities(): string[] {
     const universities = getAvailableUniversities();
-    return universities.filter((university) =>
-        university.toLowerCase().includes("gehu")
-    );
+    //Because all universities are hill universities now
+    return universities;
+    // return universities.filter((university) =>
+    //     university.toLowerCase().includes("gehu")
+    // );
 }
