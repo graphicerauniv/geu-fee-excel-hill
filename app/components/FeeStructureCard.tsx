@@ -16,6 +16,19 @@ const hasSpecialPattern = (content: string): boolean => {
     return SPECIAL_TEXT_PATTERNS.some((pattern) => content.includes(pattern));
 };
 
+// Helper function to format cell value
+const formatCellValue = (value: any): string => {
+    if (value === null || value === undefined) return "";
+
+    // If the value is a number, round it using Math.ceil
+    if (typeof value === "number") {
+        return String(Math.round(value));
+    }
+
+    // Otherwise convert to string
+    return String(value);
+};
+
 export function FeeStructureCard({
     course,
     courseParam,
@@ -185,7 +198,7 @@ export function FeeStructureCard({
                                                                   null &&
                                                               mergedCell.value !==
                                                                   undefined
-                                                                  ? String(
+                                                                  ? formatCellValue(
                                                                         mergedCell.value
                                                                     )
                                                                   : ""}
@@ -257,7 +270,9 @@ export function FeeStructureCard({
                                                   >
                                                       {cell !== null &&
                                                       cell !== undefined
-                                                          ? String(cell)
+                                                          ? formatCellValue(
+                                                                cell
+                                                            )
                                                           : ""}
                                                   </td>
                                               );
@@ -353,7 +368,7 @@ export function FeeStructureCard({
                                                                   null &&
                                                               mergedCell.value !==
                                                                   undefined
-                                                                  ? String(
+                                                                  ? formatCellValue(
                                                                         mergedCell.value
                                                                     )
                                                                   : ""}
@@ -427,7 +442,9 @@ export function FeeStructureCard({
                                                       >
                                                           {cell !== null &&
                                                           cell !== undefined
-                                                              ? String(cell)
+                                                              ? formatCellValue(
+                                                                    cell
+                                                                )
                                                               : ""}
                                                       </td>
                                                   );
