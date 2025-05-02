@@ -5,7 +5,7 @@ import { getHistoricalFiles, ensureDirectories } from "@/lib/file-service";
 export async function GET(request: NextRequest) {
     // Check for admin access
     const searchParams = Object.fromEntries(request.nextUrl.searchParams);
-    const isAdmin = isAdminRequest(searchParams);
+    const [isAdmin] = isAdminRequest(searchParams);
 
     if (!isAdmin) {
         return NextResponse.json(

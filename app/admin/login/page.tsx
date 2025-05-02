@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import {
     Card,
     CardContent,
@@ -12,21 +12,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
-
-export const USERS = [
-    { id: "ashish", name: "Ashish" },
-    { id: "aaditya", name: "Aaditya" },
-    { id: "sauhard", name: "Sauhard" },
-    { id: "aman", name: "Aman" },
-    { id: "akhil", name: "Akhil" },
-];
 
 export default function LoginPage() {
     const [password, setPassword] = useState("");
@@ -36,28 +21,34 @@ export default function LoginPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!user) {
-            alert("Please select a user");
+            alert("Please enter a username");
+            return;
+        }
+        if (!password) {
+            alert("Please enter a password");
             return;
         }
         router.push(
-            `/admin?password=${encodeURIComponent(
-                password
-            )}&user=${encodeURIComponent(user)}`
+            `/admin?user=${encodeURIComponent(
+                user
+            )}&password=${encodeURIComponent(password)}`
         );
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen">
-            <Card className="w-full max-w-md">
-                <CardHeader>
-                    <CardTitle>Admin Login</CardTitle>
-                    <CardDescription>
-                        Enter your password to access the admin portal
-                    </CardDescription>
-                </CardHeader>
-                <form onSubmit={handleSubmit}>
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-md w-full space-y-8">
+                <Card className="w-full">
+                    <CardHeader>
+                        <CardTitle className="text-2xl text-center">
+                            Admin Login
+                        </CardTitle>
+                        <CardDescription className="text-center">
+                            Enter your credentials to continue
+                        </CardDescription>
+                    </CardHeader>
                     <CardContent>
-                        <div className="space-y-4">
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="space-y-2">
                                 <label
                                     htmlFor="user"
@@ -65,25 +56,13 @@ export default function LoginPage() {
                                 >
                                     User
                                 </label>
-                                <Select
+                                <Input
+                                    id="user"
+                                    type="text"
+                                    placeholder="Enter username"
                                     value={user}
-                                    onValueChange={setUser}
-                                    required
-                                >
-                                    <SelectTrigger>
-                                        <SelectValue placeholder="Select user" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        {USERS.map((user) => (
-                                            <SelectItem
-                                                key={user.id}
-                                                value={user.id}
-                                            >
-                                                {user.name}
-                                            </SelectItem>
-                                        ))}
-                                    </SelectContent>
-                                </Select>
+                                    onChange={(e) => setUser(e.target.value)}
+                                />
                             </div>
                             <div className="space-y-2">
                                 <label
@@ -100,18 +79,20 @@ export default function LoginPage() {
                                     onChange={(e) =>
                                         setPassword(e.target.value)
                                     }
-                                    required
                                 />
                             </div>
-                        </div>
+                            <Button type="submit" className="w-full">
+                                Log in
+                            </Button>
+                        </form>
                     </CardContent>
                     <CardFooter>
-                        <Button type="submit" className="w-full">
-                            Login
-                        </Button>
+                        <p className="text-xs text-center w-full text-gray-500">
+                            This area is restricted to authorized personnel only
+                        </p>
                     </CardFooter>
-                </form>
-            </Card>
+                </Card>
+            </div>
         </div>
     );
 }

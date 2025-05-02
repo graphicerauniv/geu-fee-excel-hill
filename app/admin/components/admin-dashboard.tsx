@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -14,20 +13,18 @@ import { toast } from "sonner";
 import FileUploader from "./file-uploader";
 import FilesList from "./files-list";
 import HistoryList from "./history-list";
-import { USERS } from "../login/page";
 
-export default function AdminDashboard() {
+type User = {
+    id: string;
+    name: string;
+};
+
+export default function AdminDashboard({ user }: { user: User }) {
     const [refreshKey, setRefreshKey] = useState(0);
-    const searchParams = useSearchParams();
-    const userId = searchParams.get("user") || "unknown";
-
-    // Get user display name or use the ID if not found
-    const userDisplayName =
-        USERS.find((user) => user.id === userId)?.name || userId;
 
     const handleUploadSuccess = () => {
         toast.success("File uploaded successfully!");
-        setRefreshKey((prev) => prev + 1);
+        setRefreshKey(refreshKey + 1);
     };
 
     return (
@@ -35,12 +32,10 @@ export default function AdminDashboard() {
             <div className="flex justify-between items-center">
                 <div>
                     <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-                    <p className="text-gray-600">
-                        Logged in as: {userDisplayName}
-                    </p>
+                    <p className="text-gray-600">Logged in as: {user.name}</p>
                 </div>
                 <Button variant="outline" asChild>
-                    <a href="/">Back to Home</a>
+                    <a href="/fee">Back to Home</a>
                 </Button>
             </div>
 

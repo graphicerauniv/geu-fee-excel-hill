@@ -8,11 +8,15 @@ interface AdminPageProps {
 
 export default async function AdminPage(props: AdminPageProps) {
     const searchParams = await props.searchParams;
-    const isAdmin = isAdminRequest(searchParams);
+    const [isAdmin, user] = isAdminRequest(searchParams);
 
     if (!isAdmin) {
         redirect("/admin/login");
     }
 
-    return <AdminDashboard />;
+    if (!user) {
+        redirect("/admin/login");
+    }
+
+    return <AdminDashboard user={user} />;
 }
