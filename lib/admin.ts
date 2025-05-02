@@ -1,4 +1,4 @@
-"use server";
+import "server-only";
 
 export const USERS = [
     { id: "ashish", name: "Ashish", password: "xT9p#2Lq7@Zs5*Kf8!Vb3" },
