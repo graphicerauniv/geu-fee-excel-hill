@@ -5,7 +5,7 @@ import Image from "next/image";
 import graphicEraLogo from "@/assets/logo.svg";
 import { cn } from "@/lib/utils";
 import { CellData } from "@/lib/excel";
-
+import { formatCellValue } from "./FeeStructureCard";
 interface PrintableContentProps {
     course: {
         name: string;
@@ -130,7 +130,7 @@ export const PrintableContent = forwardRef<
                                                               null &&
                                                           cell.value !==
                                                               undefined
-                                                              ? String(
+                                                              ? formatCellValue(
                                                                     cell.value
                                                                 )
                                                               : ""}
@@ -155,7 +155,7 @@ export const PrintableContent = forwardRef<
                                               >
                                                   {cell !== null &&
                                                   cell !== undefined
-                                                      ? String(cell)
+                                                      ? formatCellValue(cell)
                                                       : ""}
                                               </td>
                                           );

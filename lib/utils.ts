@@ -38,3 +38,16 @@ export function formatUniversityDisplay(name: string): string {
     }
     return name.replace(/-/g, " ");
 }
+
+export function formatUniversityForCampusDisplay(name: string): string {
+    if (name.toLowerCase().includes("btl")) {
+        return "Bhimtal Campus";
+    }
+    if (name.toLowerCase().includes("ddn")) {
+        return "Dehradun Campus";
+    }
+    if (name.toLowerCase().includes("hld")) {
+        return "Haldwani Campus";
+    }
+    return name;
+}

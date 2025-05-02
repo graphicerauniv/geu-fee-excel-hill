@@ -17,7 +17,7 @@ const hasSpecialPattern = (content: string): boolean => {
 };
 
 // Helper function to format cell value
-const formatCellValue = (value: any): string => {
+export const formatCellValue = (value: any): string => {
     if (value === null || value === undefined) return "";
 
     // If the value is a number, round it using Math.ceil

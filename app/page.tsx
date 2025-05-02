@@ -2,7 +2,11 @@ import { getHillUniversities } from "@/lib/excel";
 import Link from "next/link";
 import Image from "next/image";
 import graphicEraHillLogo from "@/assets/logo-hill.svg";
-import { formatForUrl, formatUniversityDisplay } from "@/lib/utils";
+import {
+    formatForUrl,
+    formatUniversityDisplay,
+    formatUniversityForCampusDisplay,
+} from "@/lib/utils";
 
 export default function Home() {
     const universities = getHillUniversities();
@@ -44,7 +48,9 @@ export default function Home() {
                         >
                             <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 h-full flex flex-col transition-all hover:bg-white/15 shadow-lg">
                                 <h2 className="text-2xl font-semibold mb-2 text-white group-hover:text-blue-100 transition-colors">
-                                    {formatUniversityDisplay(university)}
+                                    {formatUniversityForCampusDisplay(
+                                        university
+                                    )}
                                 </h2>
                                 <p className="text-blue-100 opacity-80 flex-1">
                                     View fee structure for{" "}
