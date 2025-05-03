@@ -31,9 +31,9 @@ export default function FileUploader({ onUploadSuccess }: FileUploaderProps) {
             // Check if it matches existing file names
             const existingFileNames = [
                 "GEU-fee.xlsx",
-                "GEHU-Bhimtal-fee.xlsx",
-                "GEHU-Dehradun-fee.xlsx",
-                "GEHU-Haldwani-fee.xlsx",
+                "btl-fee.xlsx",
+                "ddn-fee.xlsx",
+                "hld-fee.xlsx",
             ];
             if (!existingFileNames.includes(file.name)) {
                 toast.error("Different file name than existing files");

@@ -9,11 +9,10 @@ import graphicEraHillLogo from "@/assets/logo-hill.svg";
 
 import { CourseList } from "@/app/components/CourseList";
 
-export default async function UniversityPage({
-    params,
-}: {
+export default async function UniversityPage(props: {
     params: { university: string };
 }) {
+    const params = await props.params;
     const universityParam = params.university;
     const universityName = formatUniversityDisplay(universityParam);
 
