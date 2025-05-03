@@ -10,7 +10,6 @@ import {
 
 export default function Home() {
     const universities = getHillUniversities();
-    console.log(universities);
 
     return (
         <div className="min-h-screen relative bg-gradient-to-b from-blue-800 to-blue-600 overflow-x-hidden">

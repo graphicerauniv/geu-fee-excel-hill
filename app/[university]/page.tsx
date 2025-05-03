@@ -1,4 +1,4 @@
-import { getUniversityFees } from "@/lib/excel";
+import { getUniversityFees, getHillUniversities } from "@/lib/excel";
 import { formatUniversityDisplay } from "@/lib/utils";
 
 import { notFound } from "next/navigation";
@@ -8,6 +8,14 @@ import graphicEraLogo from "@/assets/logo.svg";
 import graphicEraHillLogo from "@/assets/logo-hill.svg";
 
 import { CourseList } from "@/app/components/CourseList";
+
+export async function generateStaticParams() {
+    const universities = await getHillUniversities();
+
+    return universities.map((university) => ({
+        university: university,
+    }));
+}
 
 export default async function UniversityPage(props: {
     params: { university: string };
