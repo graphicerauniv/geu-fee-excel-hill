@@ -144,7 +144,7 @@ export default async function CoursePage(props: {
                 {/* Footer */}
                 <div className="mt-10 sm:mt-16 text-center text-blue-200 text-xs sm:text-sm">
                     <p>
-                        &copy; {new Date().getFullYear()} Graphic Era
+                        &copy; {new Date().getFullYear()} Graphic Era Hill
                         University. All rights reserved.
                     </p>
                 </div>

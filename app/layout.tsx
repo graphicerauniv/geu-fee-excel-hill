@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Graphic Era Group of Institutes Fee Portal",
-    description: "Fee structure for all Graphic Era universities and courses",
+    title: "Fee Portal | Graphic Era Hill University",
+    description:
+        "Fee structure for all Graphic Era Hill universities and courses",
 };
 
 export default function RootLayout({
