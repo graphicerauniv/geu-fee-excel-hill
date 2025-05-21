@@ -2,7 +2,7 @@
 
 import { forwardRef } from "react";
 import Image from "next/image";
-import graphicEraLogo from "@/assets/logo.svg";
+import graphicEraLogo from "@/assets/logo-hill.svg";
 import { cn } from "@/lib/utils";
 import { CellData } from "@/lib/excel";
 import { formatCellValue } from "./FeeStructureCard";
