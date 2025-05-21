@@ -201,8 +201,8 @@ export const PrintableContent = forwardRef<
             {/* Footer */}
             <div className="text-center text-xs text-gray-500 mt-2 print-footer">
                 <p>
-                    © {new Date().getFullYear()} Graphic Era University. All
-                    rights reserved.
+                    © {new Date().getFullYear()} Graphic Era Hill University.
+                    All rights reserved.
                 </p>
             </div>
         </div>
