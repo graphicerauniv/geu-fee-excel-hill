@@ -1,5 +1,5 @@
-import { getUniversityFees, getHillUniversities } from "@/lib/excel";
-import { formatUniversityDisplay, formatCourseForUrl } from "@/lib/utils";
+import { getUniversityFees } from "@/lib/excel";
+import { formatUniversityDisplay } from "@/lib/utils";
 
 import { notFound } from "next/navigation";
 
@@ -9,30 +9,8 @@ import graphicEraHillLogo from "@/assets/logo-hill.svg";
 
 import { FeeStructureCard } from "@/app/components/FeeStructureCard";
 
-export async function generateStaticParams() {
-    // Get all universities
-    const universities = getHillUniversities();
-
-    // Create an array to hold all params
-    const params = [];
-
-    // For each university, get its courses and create params
-    for (const university of universities) {
-        const universityData = await getUniversityFees(university);
-
-        if (universityData && universityData.courses) {
-            // Create a path for each course in this university
-            for (const course of universityData.courses) {
-                params.push({
-                    university,
-                    course: formatCourseForUrl(course.name),
-                });
-            }
-        }
-    }
-
-    return params;
-}
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function CoursePage(props: {
     params: Promise<{ university: string; course: string }>;

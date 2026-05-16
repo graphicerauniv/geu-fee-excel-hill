@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminRequest } from "@/lib/admin";
 import { saveFile } from "@/lib/file-service";
+import { revalidatePath } from "next/cache";
 
 export async function POST(request: NextRequest) {
     // Check for admin access
@@ -41,6 +42,13 @@ export async function POST(request: NextRequest) {
 
         // Save the file with username
         const result = await saveFile(file.name, buffer, username);
+        const university = file.name.replace(/[-]fee\.(xlsx|xls)$/i, "");
+
+        revalidatePath("/");
+        if (university !== file.name) {
+            revalidatePath(`/${university}`);
+            revalidatePath(`/${university}/[course]`, "page");
+        }
 
         return NextResponse.json({ success: true, filePath: result.filePath });
     } catch (error) {

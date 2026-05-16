@@ -17,16 +17,29 @@ interface CourseListProps {
     universityParam: string;
 }
 
+function getCellText(cell: unknown): string {
+    if (cell === null || cell === undefined) return "";
+    if (typeof cell === "string" || typeof cell === "number") {
+        return String(cell);
+    }
+    if (typeof cell === "object" && "value" in cell) {
+        return getCellText((cell as { value?: unknown }).value);
+    }
+    return "";
+}
+
 export function CourseList({ courses, universityParam }: CourseListProps) {
     const [searchTerm, setSearchTerm] = useState("");
 
     // Filter courses based on search term
     const filteredCourses = courses.filter((course) => {
-        const courseTitle = course.title[0]?.value || course.name;
-        const courseDescription = course.description[0]?.value || course.name;
+        const courseTitle = getCellText(course.title[0]) || course.name;
+        const courseDescription =
+            getCellText(course.description[0]) || course.name;
         return (
             courseTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            courseDescription.toLowerCase().includes(searchTerm.toLowerCase())
+            courseDescription.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            course.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
     });
 
@@ -62,7 +75,8 @@ export function CourseList({ courses, universityParam }: CourseListProps) {
                         >
                             <div className="p-6">
                                 <h2 className="text-xl font-medium mb-2 text-white">
-                                    {course.title[0]?.value || course.name}
+                                    {getCellText(course.title[0]) ||
+                                        course.name}
                                 </h2>
                                 <div className="mt-4 text-blue-50 font-medium flex items-center">
                                     View Fee Details
