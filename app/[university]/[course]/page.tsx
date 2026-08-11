@@ -6,11 +6,22 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import graphicEraLogo from "@/assets/logo.svg";
 import graphicEraHillLogo from "@/assets/logo-hill.svg";
+import { getCourseMetadata } from "@/lib/seo";
 
 import { FeeStructureCard } from "@/app/components/FeeStructureCard";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
+
+export async function generateMetadata(props: {
+    params: Promise<{ university: string; course: string }>;
+}) {
+    const params = await props.params;
+    const universityParam = params.university;
+    const courseParam = decodeURIComponent(params.course);
+
+    return getCourseMetadata(universityParam, courseParam) || {};
+}
 
 export default async function CoursePage(props: {
     params: Promise<{ university: string; course: string }>;

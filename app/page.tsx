@@ -7,6 +7,9 @@ import {
     formatUniversityDisplay,
     formatUniversityForCampusDisplay,
 } from "@/lib/utils";
+import { getHomeMetadata } from "@/lib/seo";
+
+export const metadata = getHomeMetadata();
 
 export default function Home() {
     const universities = getHillUniversities();

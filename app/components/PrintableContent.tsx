@@ -57,9 +57,9 @@ export const PrintableContent = forwardRef<
             {/* Header Section */}
             <div className="print-header flex items-center justify-between mb-2 p-2 bg-blue-800 text-white border-b border-gray-300">
                 <div>
-                    <h1 className="text-lg font-bold text-white m-0">
+                    <div className="text-lg font-bold text-white m-0">
                         {course.title[0].value}
-                    </h1>
+                    </div>
                     <p className="text-sm text-blue-100 m-0">
                         {course.description[0].value}
                     </p>
